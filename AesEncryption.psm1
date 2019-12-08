@@ -24,7 +24,7 @@ Function NewPasswordKey
   $passwordType = 'Security.Cryptography.Rfc2898DeriveBytes'
   $passwordDerive = New-Object -TypeName $passwordType `
     -ArgumentList @( 
-      $Password, 
+      $clearPass, 
       $saltBytes, 
       $iterations
     )
