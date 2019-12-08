@@ -64,7 +64,7 @@ The password to use to encrypt your string.
 The salt used for generating the password key.
 You must use the same salt for encryption / decryption.
 
-.PARAMATER Padding
+.PARAMETER Padding
 The padding to use for encryption / decryption.
 Default is PKCS7.
 #>
@@ -142,7 +142,7 @@ The initialization vector (IV) used for encryption, to use for decryption.
 The CipherInfo object to use for decryption.
 This object is obtained from Protect-AesString.
 
-.PARAMATER Padding
+.PARAMETER Padding
 The padding to use for encryption / decryption.
 Default is PKCS7.
 #>
