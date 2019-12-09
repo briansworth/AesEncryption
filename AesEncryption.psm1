@@ -26,7 +26,8 @@ Function NewPasswordKey
     -ArgumentList @( 
       $clearPass, 
       $saltBytes, 
-      $iterations
+      $iterations,
+      'SHA256'
     )
 
   $keyBytes = $passwordDerive.GetBytes($keySize / 8)
@@ -108,6 +109,10 @@ Function Protect-AesString
     $encrypted = $stream.ToArray()
 
     $cipher.Clear()
+    $stream.SetLength(0)
+    $stream.Close()
+    $writer.Clear()
+    $writer.Close()
     $encryptedValue = [Convert]::ToBase64String($encrypted)
     New-Object -TypeName CipherInfo `
       -ArgumentList @($encryptedValue, $vectorBytes, $Salt)
@@ -208,6 +213,10 @@ Function Unprotect-AesString
         $decryptedByteCount
       )
       $cipher.Clear()
+      $stream.SetLength(0)
+      $stream.Close()
+      $reader.Clear()
+      $reader.Close()
       return $decryptedValue
     }
     Catch
